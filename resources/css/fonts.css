@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'font';
+    src: url('../../public/fonts/Quicksand-VariableFont_wght.ttf');
+}
+
+*{
+    font-family: 'font', sans-serif;
+    outline: none;
+}
