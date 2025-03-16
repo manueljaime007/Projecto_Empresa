@@ -6,8 +6,11 @@
 <main class="w-full px-20 py-10 flex flex-col gap-10 mb-4rem">
     <div class="flex items-center justify-between">
         <h1 class="text-3xl font-semibold">Funcionários</h1>
-        <a href="{{ route('funcionario.create') }}" class="bg-red-700 py-2 px-4 rounded-sm text-white font-semibold cursor-pointer ">
-            Novo Funcionário <i class="bi bi-plus-circle-fill"></i>
+        <a href="{{ route('funcionario.create') }}" class="bg-red-700 py-2 px-4 rounded-sm text-white font-semibold cursor-pointer flex items-center gap-3">
+            Novo Funcionário
+            <span class="material-icons">
+                add_circle
+            </span>
         </a>
     </div>
     <section>
@@ -43,9 +46,17 @@
 
                             <td class="py-2 px-4">{{ $func->cargo->cargo }}</td>
 
-                            <td class="py-2 px-4">
-                                <button>editar</button>
-                                <button>eliminar</button>
+                            <td class="py-2 px-4 flex gap-4">
+                                <a class="p-2 rounded-md grid place-items-center text-blue-500 bg-red-600">
+                                    <span class="material-icons">
+                                        edit
+                                    </span>
+                                </a>
+                                <a class="p-2 rounded-md grid place-items-center">
+                                    <span class="material-icons">
+                                        delete
+                                    </span>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

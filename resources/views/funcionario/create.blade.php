@@ -2,32 +2,32 @@
 @section('title', 'Cadastrar Funcionário')
 
 @section('content')
-<div id="register_form" class="bg-[#f4f4f4]  grid place-items-center absolute top-[45%] left-[50%] translate-[-50%] px-5 py-7 rounded-md shadow-md">
-    <h2 class="text-3xl font-semibold mb-7">Funcionário</h2>
+<div id="register_form" class="bg-[#f4f4f4]  grid place-items-center absolute top-[45%] left-[50%] translate-[-50%] px-4 py-7 rounded-md shadow-md gap-10">
+    <h2 class="text-3xl font-bold mb-10">Funcionário</h2>
     <form action="{{ route('funcionario.store') }}" method="POST" class="flex flex-col w-full gap-4">
     @csrf
         <div class="flex gap-6 justify-between">
             <div class="flex flex-col gap-1 w-1/2">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" class="px-2 py-1.5 rounded-0 border-b-2 focus:border-blue-500">
+                <input type="text" id="nome" name="nome" class="px-2 py-1.5 rounded-0 border-b-2 focus:border-blue-500" required>
             </div>
             <div class="flex flex-col gap-1 w-1/2">
                 <label for="sobrenome">Sobrenome</label>
-                <input type="text" id="sobrenome" name="sobrenome" class="px-2 py-1.5 rounded-0 border-b-2">
+                <input type="text" id="sobrenome" name="sobrenome" class="px-2 py-1.5 rounded-0 border-b-2" required>
             </div>
         </div>
         <div class="flex flex-col gap-1">
             <label for="idade">Idade</label>
-            <input type="number" id="idade" name="idade" class="px-2 py-1.5 rounded-0 border-b-2">
+            <input type="number" id="idade" name="idade" class="px-2 py-1.5 rounded-0 border-b-2" min="15" max="99" required>
         </div>
         <div class="flex flex-col gap-1">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="px-2 py-1.5 rounded-0 border-b-2">
+            <input type="email" id="email" name="email" class="px-2 py-1.5 rounded-0 border-b-2" required>
         </div>
         <div class="flex items-center w-full gap-6 ">
             <div class="flex flex-col gap-1 w-1/2">
                 <label for="nome">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" class="px-2 py-1.5 rounded-0 border-b-2">
+                <input type="tel" id="telefone" name="telefone" class="px-2 py-1.5 rounded-0 border-b-2" required>
             </div>
             <div class="flex flex-col w-1/2 gap-1">
                 <label for="cargo">Cargo</label>

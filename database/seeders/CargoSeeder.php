@@ -26,6 +26,6 @@ class CargoSeeder extends Seeder
         //     "cargo"=>"DBA"
         // ]);
 
-        Cargo::factory(10)->create();
+        Cargo::factory(15)->create();
     }
 }
