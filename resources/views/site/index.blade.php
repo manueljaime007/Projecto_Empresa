@@ -47,7 +47,7 @@
                             <td class="py-2 px-4">{{ $func->cargo->cargo }}</td>
 
                             <td class="py-2 px-4 flex gap-4">
-                                <a class="p-2 rounded-md grid place-items-center text-blue-500 bg-red-600">
+                                <a class="p-2 rounded-md grid place-items-center text-white bg-blue-600">
                                     <span class="material-icons">
                                         edit
                                     </span>
