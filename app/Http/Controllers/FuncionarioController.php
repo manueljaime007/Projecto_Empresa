@@ -18,34 +18,11 @@ class FuncionarioController extends Controller
      * Store a newly created resource in storage.
      */
 
-    // public function store(Request $request)
-    // {
-    //     Funcionario::create($request->all());
-    //     return redirect()->route('home')->with('Sucess', 'Funcionario salvo com sucesso!');
-    // }
-
-    // MINHA ALTERAÇÃO
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'nome'=>'required',
-            'sobrenome'=>'required',
-            'idade'=>'required',
-            'telefone'=>'required',
-            'email'=>'required|email',
-            'id_cargo'=>'required',
-            'foto_perfil'=>'image|max:30720'
-        ]);
-
-        if($request->hasFile('foto_perfil')){
-            $path = $request->file('foto_perfil')->store('fotos', 'public');
-            $data['foto_perfil'] = $path;
-        }
-        Funcionario::create($data);
+        Funcionario::create($request->all());
         return redirect()->route('home')->with('Sucess', 'Funcionario salvo com sucesso!');
     }
-
-
 
     public function edit(int $id){
         $cargos = Cargo::all();
