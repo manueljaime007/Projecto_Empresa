@@ -13,7 +13,8 @@ class Funcionario extends Model
         'idade',
         'telefone',
         'email',
-        'id_cargo'
+        'id_cargo',
+        'foto_perfil'
     ];
 
     public function cargo(){

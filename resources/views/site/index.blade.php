@@ -2,10 +2,18 @@
 @section('title', 'Listar funcionários')
 
 @section('content')
+
+@if (session('success'))
+    <div class="alert alert-success text-green-400">
+        {{ session('success') }}
+    </div>
+@endif
+
+
 <div id="overlay"></div>
 <main class="w-full px-20 py-10 flex flex-col gap-10 mb-4rem">
     <div class="flex items-center justify-between">
-        <h1 class="text-3xl font-semibold">Funcionários</h1>
+        <h1 class="text-3xl font-semibold">Funcionários ({{ $funcionarios_count }})</h1>
         <a href="{{ route('funcionario.create') }}" class="bg-red-700 py-2 px-4 rounded-sm text-white font-semibold cursor-pointer flex items-center gap-3">
             Novo Funcionário
             <span class="material-icons">
@@ -20,6 +28,7 @@
                 <thead class="bg-gray-200">
                     <tr>
                         <th class="py-2 px-4 text-left text-gray-600">#</th>
+                        <th class="py-2 px-4 text-left text-gray-600">Foto de Perfil</th>
                         <th class="py-2 px-4 text-left text-gray-600">Nome Completo</th>
                         <th class="py-2 px-4 text-left text-gray-600">Idade</th>
                         <th class="py-2 px-4 text-left text-gray-600">Email</th>
@@ -32,6 +41,11 @@
                     @foreach ($funcionarios as $func)
                         <tr class="border-b hover:bg-gray-50">
                             <td class="py-2 px-4 font-semibold">{{ $func->id}}</td>
+                            <td class="py-2 px-4 font-semibold">
+                                @if ($func->foto_perfil)
+                                    <img src="{{ asset('storage/' . $func->foto_perfil) }}" class="w-[50px] h-[50px] rounded-full object-cover">
+                                @endif
+                            </td>
                             <td class="py-2 px-4 font-semibold">
                                 {{ $func->nome }} {{ $func->sobrenome }}
                             </td>
@@ -46,17 +60,23 @@
 
                             <td class="py-2 px-4">{{ $func->cargo->cargo }}</td>
 
-                            <td class="py-2 px-4 flex gap-4">
-                                <a class="p-2 rounded-md grid place-items-center text-white bg-blue-600">
+                            <td class="py-2 px-4 flex items-center gap-4">
+                                <a href="{{route('funcionario.edit', ['id'=>$func->id])}}" class="p-2 rounded-md grid place-items-center text-white bg-blue-600">
                                     <span class="material-icons">
                                         edit
                                     </span>
                                 </a>
-                                <a class="p-2 rounded-md grid place-items-center">
-                                    <span class="material-icons">
-                                        delete
-                                    </span>
-                                </a>
+
+                                <form action=" {{route('funcionario.destroy', ['id'=>$func->id])}} " method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="p-2 rounded-md grid place-items-center text-white bg-red-700 cursor-pointer">
+                                        <span class="material-icons">
+                                            delete
+                                        </span>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -65,6 +85,5 @@
         </div>
     </section>
 </main>
-
 @endsection
 

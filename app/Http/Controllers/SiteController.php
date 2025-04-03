@@ -11,6 +11,7 @@ class SiteController extends Controller
     public function index(){
         $cargos = Cargo::all();
         $funcionarios = Funcionario::all();
-        return view('site.index', compact('funcionarios', 'cargos'));
+        $funcionarios_count = Funcionario::count();
+        return view('site.index', compact('funcionarios', 'cargos', 'funcionarios_count'));
     }
 }

@@ -14,7 +14,6 @@
 <body class="w-full h-[100dvh">
     @yield('content')
 
-
     @stack('scripts')
 </body>
 </html>
